@@ -1,0 +1,14 @@
+#Argon energy minimization
+units         metal
+atom_style    atomic
+dimension     3
+boundary      p p p
+read_data     data.argon
+
+pair_style    lj/cut 3.5
+pair_coeff    * * 0.0103 3.4
+
+dump          coord all custom 1 argon.dump id type x y z
+dump          video2 all atom 100 dump-argon.lammpstrj
+
+minimize 1e-25 1e-25 10000 10000
