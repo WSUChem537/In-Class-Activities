@@ -1,0 +1,27 @@
+# liquid Ar equilibration - Procedure #1 ambient MD 
+#
+#
+#
+#
+
+clear
+units real #T in K, E in kcal/mol, dist in Ang
+boundary p p p
+atom_style atomic
+read_data	argon.dat
+
+pair_style 	lj/cut 6.5 #use half-box length cutoff
+pair_coeff * * 0.2498 3.345 #check units in kcal/mol and Ang
+
+
+dump coord all custom 1 argon.dump id type x y z #needs to be modified, from minimization
+dump video2 all atom 64 dump.Ar.lammpstrj
+
+velocity all create 300.0 12345  dist gaussian #creates an initial gaussian distribution of velocities to yield 300K
+
+timestep 1.0 #units of fs
+
+fix 1 all nvt temp 300 300 0.1 #starting and ending temp with fix command
+
+run 1000
+
