@@ -1,0 +1,15 @@
+We will have 2 equilibration procedures that we will develop:
+
+1) Use NVT --> NPT --> NVT  at the temperature and pressure associated with the conditions of liquid Argon that you identified (make sure and put the reference for how you identified the conditions
+
+2) perform simulated annealing where we will heat the system by 100K over the desired temperature, then use fix commands to systematically cool the system in NVT prior to running NPT under the desired T and P
+
+TO DO:
+
+A) focus first on procedure #1 above. Make sure and adjust your print commands so that you can print out the variables (T, P, E) at every timestep, adjust the dump commands of coordinates so that the coordinates are printed every 10 fs (10 steps if you are using a 1fs timestep). Also use the print command to print the radial distribution function (RDF - we will use this later). Get this procedure working for 1000 steps first (since it only takes a few seconds to run), then do your first NVT for 10K timesteps. 
+
+-we will use  sed (stream editing) to create a script that extracts the values of T, P, and E into a single file:
+
+sed -n /PATTERN/p filename > text-output
+
+this text-output file will then be read into a jupyter notebook for plotting. 
