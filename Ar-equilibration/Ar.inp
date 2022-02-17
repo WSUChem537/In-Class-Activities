@@ -8,9 +8,9 @@ clear
 units real #T in K, E in kcal/mol, dist in Ang
 boundary p p p
 atom_style atomic
-read_data	argon.dat
+read_data       Ar.dat
 
-pair_style 	lj/cut 6.5 #use half-box length cutoff
+pair_style      lj/cut 6.5 #use half-box length cutoff
 pair_coeff * * 0.2498 3.345 #check units in kcal/mol and Ang
 
 
@@ -20,11 +20,12 @@ dump video2 all atom 64 dump.Ar.lammpstrj
 
 minimize 1e-25 1e-25 10000 10000
 
-velocity all create 300.0 12345  dist gaussian #creates an initial gaussian distribution of velocities to yield 300K
+velocity all create 87.2 123456  dist gaussian #creates an initial gaussian distribution of velocities to yield 300K
+
+fix 1 all nvt temp 87.2 87.2 0.1 #starting and ending temp with fix command
 
 timestep 1.0 #units of fs
 
-fix 1 all nvt temp 300 300 0.1 #starting and ending temp with fix command, NVT is using Nose/Hoover thermostatting and time integration
+thermo 5
 
 run 1000
-
