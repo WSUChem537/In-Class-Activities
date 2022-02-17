@@ -24,7 +24,7 @@ velocity all create 300.0 12345  dist gaussian #creates an initial gaussian dist
 
 timestep 1.0 #units of fs
 
-fix 1 all nvt temp 300 300 0.1 #starting and ending temp with fix command
+fix 1 all nvt temp 300 300 0.1 #starting and ending temp with fix command, NVT is using Nose/Hoover thermostatting and time integration
 
 run 1000
 
