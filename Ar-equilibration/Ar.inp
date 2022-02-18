@@ -22,10 +22,10 @@ minimize 1e-25 1e-25 10000 10000
 
 velocity all create 87.2 123456  dist gaussian #creates an initial gaussian distribution of velocities to yield 300K
 
-fix 1 all nvt temp 87.2 87.2 0.1 #starting and ending temp with fix command
+fix 1 all nvt temp 87.2 87.2 0.1 #starting and ending temp with fix command, what does the 0.1 mean? Tdamp - check it out in the fix nvt documentation on the website.
 
 timestep 1.0 #units of fs
 
-thermo 5
+thermo 5  #report the temperature (and P and E) every 5 steps
 
 run 1000
